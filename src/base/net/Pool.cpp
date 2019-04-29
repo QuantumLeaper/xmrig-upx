@@ -443,7 +443,7 @@ void xmrig::Pool::adjustVariant(const xmrig::Variant variantHint)
             m_algorithm.setVariant(m_port == 45700 ? VARIANT_AUTO : VARIANT_0);
         }
         else if (m_host.contains("aeon.pool.") && m_port == 45690) {
-            valid = m_algorithm.algo() == CRYPTONIGHT_LITE;
+            valid = m_algorithm.algo() == CRYPTONIGHT_UPX;
             m_algorithm.setVariant(VARIANT_1);
         }
 
@@ -466,7 +466,7 @@ void xmrig::Pool::adjustVariant(const xmrig::Variant variantHint)
     if (m_algorithm.algo() == CRYPTONIGHT_HEAVY)  {
         m_algorithm.setVariant(VARIANT_0);
     }
-    else if (m_algorithm.algo() == CRYPTONIGHT_LITE) {
+    else if (m_algorithm.algo() == CRYPTONIGHT_UPX) {
         m_algorithm.setVariant(VARIANT_1);
     }
 #   endif

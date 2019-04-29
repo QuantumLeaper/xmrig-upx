@@ -15,7 +15,7 @@
 	mov	 rax, QWORD PTR [rcx+48]
 	mov	 r9, rcx
 	xor	 rax, QWORD PTR [rcx+16]
-	mov	 esi, 393216
+	mov	 esi, 16384
 	mov	 r8, QWORD PTR [rcx+32]
 	mov	 r13d, -2147483647
 	xor	 r8, QWORD PTR [rcx]
@@ -35,7 +35,7 @@
 	movaps	 XMMWORD PTR [rsp+64], xmm6
 	movaps	 XMMWORD PTR [rsp+48], xmm7
 	movaps	 XMMWORD PTR [rsp+32], xmm8
-	and	 r10d, 2097136
+	and	 r10d, 131056
 	movq	 xmm5, rax
 
 	xor eax, eax
@@ -65,7 +65,7 @@ rwz_main_loop:
 	aesenc	 xmm6, xmm7
 	movq	 rbp, xmm6
 	mov	 r9, rbp
-	and	 r9d, 2097136
+	and	 r9d, 131056
 	movdqu	 xmm0, XMMWORD PTR [rcx+rbx]
 	movdqu	 xmm1, XMMWORD PTR [rax+rbx]
 	movdqu	 xmm2, XMMWORD PTR [r10+rbx]
@@ -122,7 +122,7 @@ rwz_sqrt_fixup_ret:
 	mov	 QWORD PTR [r14], r8
 	xor	 r8, rdi
 	mov edi, r8d
-	and edi, 2097136
+	and edi, 131056
 	movq xmm0, rax
 	xor rax, [rcx+rbx+8]
 	add	 r11, rax

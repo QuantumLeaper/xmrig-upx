@@ -345,7 +345,7 @@ bool xmrig::Config::parseInt(int key, int arg)
 xmrig::AlgoVariant xmrig::Config::getAlgoVariant() const
 {
 #   ifndef XMRIG_NO_AEON
-    if (m_algorithm.algo() == xmrig::CRYPTONIGHT_LITE) {
+    if (m_algorithm.algo() == xmrig::CRYPTONIGHT_UPX) {
         return getAlgoVariantLite();
     }
 #   endif

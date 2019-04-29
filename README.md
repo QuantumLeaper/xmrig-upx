@@ -1,49 +1,32 @@
-# XMRig
+# XMRig-UPX
 
-[![Github All Releases](https://img.shields.io/github/downloads/xmrig/xmrig/total.svg)](https://github.com/xmrig/xmrig/releases)
-[![GitHub release](https://img.shields.io/github/release/xmrig/xmrig/all.svg)](https://github.com/xmrig/xmrig/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/releases)
-[![GitHub license](https://img.shields.io/github/license/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/xmrig/xmrig.svg)](https://github.com/xmrig/xmrig/network)
+[![GitHub Release Date](https://img.shields.io/github/release-date-pre/xmrig/xmrig.svg)](https://github.com/uPlexa/xmrig-upx/releases)
+[![GitHub license](https://img.shields.io/github/license/xmrig/xmrig.svg)](https://github.com/uPlexa/xmrig-upx/blob/master/LICENSE)
 
-XMRig is a high performance Monero (XMR) CPU miner, with official support for Windows.
+XMRig-UPX is a high performance uPlexa (UPX) CPU miner, with official support for Windows and Linux.
 Originally based on cpuminer-multi with heavy optimizations/rewrites and removing a lot of legacy code, since version 1.0.0 completely rewritten from scratch on C++.
 
-* This is the **CPU-mining** version, there is also a [NVIDIA GPU version](https://github.com/xmrig/xmrig-nvidia) and [AMD GPU version]( https://github.com/xmrig/xmrig-amd).
-* [Roadmap](https://github.com/xmrig/xmrig/issues/106) for next releases.
-
-<img src="http://i.imgur.com/Ymumes5.png" width="670" >
+<img src="https://i.imgur.com/ZhkaKA1.png" width="619" >
 
 #### Table of contents
 * [Features](#features)
 * [Download](#download)
 * [Usage](#usage)
 * [Algorithm variations](#algorithm-variations)
-* [Build](https://github.com/xmrig/xmrig/wiki/Build)
-* [Common Issues](#common-issues)
+* [Build](https://github.com/uPlexa/xmrig-upx/wiki/Build)
 * [Other information](#other-information)
-* [Donations](#donations)
-* [Release checksums](#release-checksums)
 * [Contacts](#contacts)
 
-## Features
-* High performance.
-* Official Windows support.
-* Small Windows executable, without dependencies.
-* x86/x64 support.
-* Support for backup (failover) mining server.
-* keepalived support.
-* Command line options compatible with cpuminer.
-* CryptoNight-Lite support for AEON.
-* Smart automatic [CPU configuration](https://github.com/xmrig/xmrig/wiki/Threads).
-* Nicehash support
-* It's open source software.
+## UPXTWO HARDFORK SUPPORT
+* use cryptonight-upx/1 for UPX variant 1
+* use cryptonight-upx/2 for UPX variant 2 (or use cryptonight-upxtwo)
+* use cryptonight-upx will revert to variant 1, post hardfork upx v1 will be deprecated
+* Autoswitching from v1 to v2 will not work due to memory changes
 
 ## Download
-* Binary releases: https://github.com/xmrig/xmrig/releases
-* Git tree: https://github.com/xmrig/xmrig.git
-  * Clone with `git clone https://github.com/xmrig/xmrig.git` :hammer: [Build instructions](https://github.com/xmrig/xmrig/wiki/Build).
+* Binary releases: https://github.com/uPlexa/xmrig-upx/releases
+* Git tree: https://github.com/uPlexa/xmrig-upx.git
+  * Clone with `git clone https://github.com/uPlexa/xmrig-upx.git` :hammer: [Build instructions](https://github.com/uPlexa/xmrig-upx/wiki/Build).
 
 ## Usage
 Use [config.xmrig.com](https://config.xmrig.com/xmrig) to generate, edit or share configurations.
@@ -51,9 +34,7 @@ Use [config.xmrig.com](https://config.xmrig.com/xmrig) to generate, edit or shar
 ### Options
 ```
   -a, --algo=ALGO          specify the algorithm to use
-                             cryptonight
-                             cryptonight-lite
-                             cryptonight-heavy
+                             cryptonight-upx
   -o, --url=URL            URL of mining server
   -O, --userpass=U:P       username:password pair for mining server
   -u, --user=USERNAME      username for mining server
@@ -93,12 +74,11 @@ Use [config.xmrig.com](https://config.xmrig.com/xmrig) to generate, edit or shar
   -V, --version            output version information and exit
 ```
 
-Also you can use configuration via config file, default name **config.json**. Some options available only via config file: [`autosave`](https://github.com/xmrig/xmrig/issues/767), [`hw-aes`](https://github.com/xmrig/xmrig/issues/563). `watch` option currently not implemented in miners only in proxy.
+Also you can use configuration via config file, default name **config.json**.
 
 ## Algorithm variations
 
 - `av` option used for automatic and simple threads mode (when you specify only threads count).
-- For [advanced threads mode](https://github.com/xmrig/xmrig/issues/563) each thread configured individually and `av` option not used.
 
 | av | Hashes per round | Hardware AES |
 |----|------------------|--------------|
@@ -113,21 +93,11 @@ Also you can use configuration via config file, default name **config.json**. So
 | 9  | 4 (Quard)        | no           |
 | 10 | 5 (Penta)        | no           |
 
-## Common Issues
 ### HUGE PAGES unavailable
 * Run XMRig as Administrator.
-* Since version 0.8.0 XMRig automatically enables SeLockMemoryPrivilege for current user, but reboot or sign out still required. [Manual instruction](https://msdn.microsoft.com/en-gb/library/ms190730.aspx).
 
 ## Other information
 * No HTTP support, only stratum protocol support.
-* Default donation 5% (5 minutes in 100 minutes) can be reduced to 1% via option `donate-level`.
-
-
-### CPU mining performance
-* **Intel i7-7700** - 307 H/s (4 threads)
-* **AMD Ryzen 7 1700X** - 560 H/s (8 threads)
-
-Please note performance is highly dependent on system load. The numbers above are obtained on an idle system. Tasks heavily using a processor cache, such as video playback, can greatly degrade hashrate. Optimal number of threads depends on the size of the L3 cache of a processor, 1 thread requires 2 MB of cache.
 
 ### Maximum performance checklist
 * Idle operating system.
@@ -136,11 +106,7 @@ Please note performance is highly dependent on system load. The numbers above ar
 * Try setup optimal cpu affinity.
 * Enable fast memory (Large/Huge pages).
 
-## Donations
-* XMR: `48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD`
-* BTC: `1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT`
 
 ## Contacts
-* support@xmrig.com
-* [reddit](https://www.reddit.com/user/XMRig/)
-* [twitter](https://twitter.com/xmrig_dev)
+* [uplexa](https://reddit.com/r/uplexa)
+* [discord](https://discord.gg/a7mAQwJ)

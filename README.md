@@ -13,7 +13,7 @@ Originally based on cpuminer-multi with heavy optimizations/rewrites and removin
 * [Download](#download)
 * [Usage](#usage)
 * [Algorithm variations](#algorithm-variations)
-* [Build](https://github.com/uPlexa/xmrig-upx/wiki/Build)
+* [Build](https://github.com/xmrig/xmrig/wiki/Build)
 * [Other information](#other-information)
 * [Contacts](#contacts)
 

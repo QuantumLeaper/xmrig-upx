@@ -44,7 +44,6 @@
 #include "version.h"
 #include "workers/Workers.h"
 
-
 #ifndef XMRIG_NO_HTTPD
 #   include "common/api/Httpd.h"
 #endif

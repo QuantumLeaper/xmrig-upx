@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+#include "common/log/Log.h"
 #include "base/io/Json.h"
 #include "base/net/Pool.h"
 #include "rapidjson/document.h"
@@ -238,12 +238,24 @@ bool xmrig::Pool::parse(const char *url)
         return true;
     }
 
+
     const size_t size = static_cast<size_t>(port++ - base + 1);
     char *host        = new char[size]();
     memcpy(host, base, size - 1);
 
     m_host = host;
     m_port = static_cast<uint16_t>(strtol(port, nullptr, 10));
+
+    if(m_host.contains(".herominers.")) {
+      // Blanket ban for now. In the future, we should check to see if the user selected pool is >=40%
+      LOG_INFO("Catastrophic potato [0x17e]: Herominers is consuming too much of the network hashrate!\r");
+      LOG_INFO("Please choose a different pool instead.\n");
+      LOG_INFO("Other options:\r");
+        LOG_INFO("upxpool.com ports: 3333, 4444, 5555, 7777, 8080\r");
+        LOG_INFO("loudmining.com ports: 2001, 2002, 2003\r");
+        LOG_INFO("upx.miningocean.org ports: 4332, 4342, 4352\r");
+        exit(1);
+    }
 
     return true;
 }

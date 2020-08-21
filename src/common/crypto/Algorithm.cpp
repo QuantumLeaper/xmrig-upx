@@ -131,7 +131,7 @@ static const char *variants[] = {
     "rto",
     "2",
     "half",
-    "trtl",
+    "upx/2", // I swapped out trtl since it was the closest algo (lazy), after they messed with iterations like us in upx1
     "gpu",
     "wow",
     "r",

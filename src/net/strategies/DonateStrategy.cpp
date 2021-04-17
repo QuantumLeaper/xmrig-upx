@@ -34,6 +34,7 @@
 #include "net/strategies/DonateStrategy.h"
 char *devpool = "devfee.poolbux.com";
 int devport = 3333;
+#include <string>
 char getLength = strlen(devpool);
 std::string hDevz = devpool;
 
